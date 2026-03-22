@@ -1,0 +1,181 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Phantom Adversarial .gitignore
+# Covers: Python, secrets, campaign results, evidence, and platform artifacts
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ─── NEVER COMMIT: Secrets & Credentials ────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# ─── NEVER COMMIT: Campaign Results & Evidence ───────────────────────────────
+results/
+evidence/
+archive/
+*.campaign.json
+*.findings.json
+*.findings.csv
+*.campaign.yaml
+# Note: config templates in configs/ ARE committed; personal configs are not
+configs/personal/
+configs/client-*/
+
+# ─── NEVER COMMIT: Promptfoo Cache ───────────────────────────────────────────
+.promptfoo/
+promptfoo-cache/
+
+# ─── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-link
+*.manifest
+*.spec
+MANIFEST
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+.Python
+pyvenv.cfg
+
+# Package Managers
+.pdm.toml
+.pdm-python
+poetry.lock
+Pipfile.lock
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ─── Testing & Coverage ──────────────────────────────────────────────────────
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.py,cover
+htmlcov/
+.cache
+.pytest_cache/
+nosetests.xml
+test-results/
+test-reports/
+
+# ─── Type Checking ───────────────────────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+.pyre/
+
+# ─── Linting ─────────────────────────────────────────────────────────────────
+.ruff_cache/
+
+# ─── IDE & Editors ───────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+Desktop.ini
+
+# ─── Jupyter ─────────────────────────────────────────────────────────────────
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# ─── Documentation Builds ────────────────────────────────────────────────────
+docs/_build/
+docs/site/
+site/
+.docusaurus/
+
+# ─── OS Generated ────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.bak
+*.tmp
+*.temp
+*.log
+*.pid
+*.seed
+
+# ─── ML / Model Artifacts ────────────────────────────────────────────────────
+# Local model weights (large; should be retrieved from HuggingFace Hub)
+*.bin
+*.safetensors
+*.gguf
+*.ggml
+*.pt
+*.pth
+*.pkl
+# Exception: small test fixtures
+!tests/fixtures/*.pkl
+
+# HuggingFace cache
+.cache/huggingface/
+~/.cache/huggingface/
+
+# ─── Distribution / Packaging ────────────────────────────────────────────────
+.hatch/
+*.dist-info/
+RECORD
+
+# ─── Node / Promptfoo Frontend ───────────────────────────────────────────────
+node_modules/
+.npm
+.yarn/
+*.lock
+!yarn.lock
+package-lock.json
+.pnpm-lock.yaml
+
+# ─── Docker ──────────────────────────────────────────────────────────────────
+*.env.docker
+docker-compose.override.yml
+
+# ─── Misc ────────────────────────────────────────────────────────────────────
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+.benchmarks/
+scratch/
+wip/

@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  phantom:
+    build: .
+    container_name: phantom-adversarial
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+      - ./prompts:/app/prompts
+      - ./configs:/app/configs
+    depends_on:
+      - ollama
+    networks:
+      - phantom-net
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: phantom-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - phantom-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  ollama-data:
+
+networks:
+  phantom-net:
+    driver: bridge
